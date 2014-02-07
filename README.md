@@ -23,23 +23,30 @@ in a survey.
 ## Releases
 
 ### Release 0: Design
-Spend a solid design period with your team developing your design and team approach.  
- 
+
+Spend a solid design period with your team developing your design and team
+approach.
+
 #### Wireframes
 
-Create a solid set of wireframes of the pages/ states of pages of your application.  Use a tool like [Balsamiq][balsamiq] or sketch them on paper.
+Create a solid set of wireframes of the pages/ states of pages of your
+application.  Use a tool like [Balsamiq][Balsamiq] or sketch them on paper.
 
-Discuss what your core pages are and what your core user flows are.  There should be two core flows: survey creation and survey
-completion.
+Discuss what your core pages are and what your core user flows are.  There
+should be two core flows: survey creation and survey completion.
 
 #### User Stories
-Create a solid set of user stories for your application.  Use your wireframes to guide stories (ie what happens when a user clicks here?).
 
-You have two types of users in this application, survey creators and survey takers; build stories for both.
+Create a solid set of user stories for your application.  Use your wireframes
+to guide stories (ie what happens when a user clicks here?).
 
-List your user stories in Trello.  
+You have two types of users in this application, survey creators and survey
+takers; build stories for both.
+
+List your user stories in Trello.
 
 #### MVP
+
 Decide what your MVP will be.  Make sure you have wireframes and user stories for all parts of your MVP.
 
 Create a repository for your project. In your repository README include
@@ -50,7 +57,7 @@ Create a repository for your project. In your repository README include
   * A brief description of your team dynamic and git workflow.
 
 
-###Release 1 : Models
+### Release 1 : Models
 
 This schema will be fairly complex
 and it will help to think in terms of survey-creators versus survey-voters. (You may want to refer back to the polling challenges)
@@ -69,7 +76,7 @@ Each of these should correspond to a single table in your database and a single 
 
 Users need to be signed in to create a survey and vote in a survey.
 
-Make sure your models support all of your user stories. 
+Make sure your models support all of your user stories.
 
 ### Release 2: Survey Creation
 
