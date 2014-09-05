@@ -3,6 +3,11 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
+get '/surveys/:id' do |id|
+  @survey = Survey.find(id)
+  erb :"surveys/show"
+end
+
 get '/surveys/new' do
   if not current_user
     redirect '/login'
@@ -21,7 +26,3 @@ post '/surveys' do
   end
 end
 
-get '/surveys/:id' do |id|
-  @survey = Survey.find(id)
-  erb :"surveys/show"
-end
