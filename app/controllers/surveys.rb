@@ -3,22 +3,29 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
-get '/surveys/:id' do |id|
-  @survey = Survey.find(id)
-  erb :"surveys/show"
-end
-
 get '/surveys/new' do
   if not current_user
-    redirect '/login'
+    redirect '/sessions/new'
   else
     erb :"surveys/new"
   end
 end
 
+get '/surveys/:id' do |id|
+  @survey = Survey.find(id)
+  erb :"surveys/show"
+end
+
 post '/surveys' do
-  survey_data = params[:survey].merge({user: current_user})
-  @survey = Survey.new(survey_data)
+  @survey = Survey.new(name: params[:name])
+  params[:questions].each do |question_data|
+    question = Question.create(text: question_data["text"], survey: @survey)
+    choices = question_data["choices"]
+    choices.each do |choice_text|
+      Choice.create(text: choice_text, question: question)
+    end
+  end
+
   if @survey.save
     redirect "/"
   else

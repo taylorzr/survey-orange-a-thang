@@ -1,6 +1,28 @@
-<form name = "createSurvey" action = "/surveys/new" method = "post">
-	<label>Question:</label><input type = "text" name = "question">
-	<input type = "text" name = "choices[choice1]" placeholder = "enter choice ">
+<form action="/surveys" method="post">
+  <div>
+    <label>Name:</label> <input type="test" name="name" placeholder="Name">
+  </div>
+  <ol>
+
+    <li>
+      <label>Question:</label> <input type="text" name="questions[][text]" placeholder="Enter a question">
+      <ol>
+        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
+        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
+      </ol>
+   </li>
+
+    <li>
+      <label>Question:</label> <input type="text" name="questions[][text]" placeholder="Enter a question">
+      <ol>
+        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
+        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
+      </ol>
+   </li>
+
+  </ol>
+
+  <input type="submit" value="Save">
 </form>
 
 
