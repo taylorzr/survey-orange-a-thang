@@ -3,17 +3,27 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
-get '/surveys/:id' do |id|
-  @survey = Survey.find(id)
-  erb :"surveys/show"
-end
-
 get '/surveys/new' do
   if not current_user
     redirect '/login'
   else
     erb :"surveys/new"
   end
+end
+
+get '/surveys/:id' do |id|
+  @survey = Survey.find(id)
+  erb :"surveys/show"
+end
+
+post '/surveys/:id' do |id|
+  survey = Survey.find(id)
+  # survey.questions.each do |question|
+  #   question.answers = params[question.id][:answer]
+  # end
+  raise params.inspect
+  # Survey.save
+  redirect '/surveys/index'
 end
 
 post '/surveys' do

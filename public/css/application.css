@@ -112,3 +112,8 @@ form.quirks {
   margin-right: 20px;
   width: 200px;
 }
+
+.choices {
+  list-style: none;
+  border: none;
+}

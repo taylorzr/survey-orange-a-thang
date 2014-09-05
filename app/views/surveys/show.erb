@@ -1,9 +1,17 @@
 <h1><%=@survey.name%></h1>
+<form action = "/surveys/:id" method="post">
 
-<ol>
-    <% @survey.questions.each do |question| %>
-      <li><%=question.text%></li>
-    <%end%>
+  <ol>
+      <% @survey.questions.each do |question| %>
+        <li><%=question.text%></li>
+          <ul class="choices">
+            <%question.choices.each do |choice| %>
+              <li><input type="radio" class="answer" name = "question<%= question.id %>[answer]" > <%=choice.text%></li>
+            <% end %>
+          </ul>
+      <%end%>
+  </ol>
+    <input type="submit" value="Submit">
+</form>
 
-</ol>
 
