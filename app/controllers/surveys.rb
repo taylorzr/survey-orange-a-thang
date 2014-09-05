@@ -17,7 +17,7 @@ post '/surveys' do
   if @survey.save
     redirect "/"
   else
-    erb: :"surveys/new"
+    erb :"surveys/new"
   end
 end
 
