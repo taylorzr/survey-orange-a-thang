@@ -4,5 +4,11 @@
   <div id="home-img">
     <img id="orangutan" src="../media/orangutan.png">
   </div>
-  <button id="create" type="submit">CREATE A SURVEY</button>
+  <form method="get" action="/surveys/new">
+    <input id="create" type="submit" value="CREATE A SURVEY">
+  </form>
+  <form method="get" action="/surveys">
+    <input id="take" type="submit" value="TAKE A SURVEY">
+  </form>
+
 </div>

@@ -1,0 +1,9 @@
+<h1><%=@survey.name%></h1>
+
+<ol>
+    <% @survey.questions.each do |question| %>
+      <li><%=question.text%></li>
+    <%end%>
+
+</ol>
+
