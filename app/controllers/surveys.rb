@@ -76,8 +76,8 @@ get '/surveys' do
 end
 
 get '/surveys/:id/info' do
+  @survey = Survey.find(params[:id])
   if @survey.creator.id == current_user.id
-    @survey = Survey.find(params[:id])
     erb :"surveys/info"
   else
     redirect '/surveys'
