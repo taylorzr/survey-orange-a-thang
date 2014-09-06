@@ -9,7 +9,6 @@ get '/surveys/new' do
   end
 end
 
-
 get 'surveys/:id/info' do
   @survey = Survey.find(params[:id])
   if @survey.creator.id == current_user
@@ -56,7 +55,6 @@ end
 get '/surveys/:id/edit' do |id|
   @survey = Survey.find(id)
   erb :"surveys/edit"
->>>>>>> 68d8859a530b99d636e593dc69a85248839c5369
 end
 
 put '/surveys/:id' do |id|
@@ -77,10 +75,6 @@ put '/surveys/:id' do |id|
   end
 end
 
-<<<<<<< HEAD
-get '/questions/new' do
-=======
-
 # ------ DELETE ------ #
 
 delete '/surveys/:id' do |id|
@@ -97,10 +91,16 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
+get '/surveys/:id/info' do |id|
+  @survey = Survey.find(id)
+  erb :'/surveys/info'
+end
+
 get '/surveys/:id' do |id|
   @survey = Survey.find(id)
   erb :"surveys/show"
 end
+
 
 
 # ------- TAKE ------- #
@@ -119,7 +119,6 @@ end
 # ------ AJAX ------ #
 
 get '/questions/new' do
->>>>>>> 68d8859a530b99d636e593dc69a85248839c5369
   if request.xhr?
     erb :"surveys/_question", layout: false, locals: {question: Question.new}
   end
