@@ -2,26 +2,11 @@
   <div>
     <label>Name:</label> <input type="test" name="name" placeholder="Name">
   </div>
-  <ol>
-
-    <li>
-      <label>Question:</label> <input type="text" name="questions[][text]" placeholder="Enter a question">
-      <ol>
-        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
-        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
-      </ol>
-   </li>
-
-    <li>
-      <label>Question:</label> <input type="text" name="questions[][text]" placeholder="Enter a question">
-      <ol>
-        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
-        <li><label>Choice:</label> <input type="text" name="questions[][choices][]" placeholder="Enter choice"></li>
-      </ol>
-   </li>
-
+  <ol id="question-list">
+    <%= erb :"surveys/_question" %>
+    <%= erb :"surveys/_question" %>
   </ol>
-
+  <input class="add-question" type="button" value="Add Question">
   <input type="submit" value="Save">
 </form>
 

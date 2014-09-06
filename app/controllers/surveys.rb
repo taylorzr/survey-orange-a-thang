@@ -33,3 +33,15 @@ post '/surveys' do
   end
 end
 
+get '/questions/new' do 
+  if request.xhr?
+    erb :"surveys/_question", layout: false
+  end
+end
+
+get '/choices/new' do
+  if request.xhr?
+    erb :"surveys/_choice", layout: false
+  end
+end
+
