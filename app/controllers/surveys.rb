@@ -9,7 +9,6 @@ get '/surveys/new' do
   end
 end
 
-
 get 'surveys/:id/info' do
   @survey = Survey.find(params[:id])
   if @survey.creator.id == current_user
@@ -57,7 +56,6 @@ get '/surveys/:id/edit' do |id|
   @survey = Survey.find(id)
   erb :"surveys/edit"
 
-end
 
 put '/surveys/:id' do |id|
   @survey = Survey.find(id)
@@ -93,10 +91,16 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
+get '/surveys/:id/info' do |id|
+  @survey = Survey.find(id)
+  erb :'/surveys/info'
+end
+
 get '/surveys/:id' do |id|
   @survey = Survey.find(id)
   erb :"surveys/show"
 end
+
 
 
 # ------- TAKE ------- #
