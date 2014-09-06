@@ -16,6 +16,20 @@ get '/surveys/:id' do |id|
   erb :"surveys/show"
 end
 
+post '/surveys/:id' do |id|
+  survey = Survey.find(id)
+  # raise params.inspect
+
+  params[:questions].each do |question_id, choice_id|
+    Answer.create(question_id: question_id, choice_id: choice_id)
+  end
+
+  # survey.questions.each do |question|
+  #   answer = Answer.create(question_id: question.id, choice_id: params[choice.id])
+  # end
+  redirect '/surveys'
+end
+
 post '/surveys' do
   @survey = Survey.new(name: params[:name])
   params[:questions].each do |question_data|
