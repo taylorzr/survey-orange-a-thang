@@ -11,7 +11,7 @@ end
 
 post '/surveys' do
   @survey = Survey.new
-  survey.name = params[:name]
+  @survey.name = params[:name]
   params[:questions].each do |question_data|
     question = Question.create(text: question_data["text"], survey: @survey)
     choices = question_data["choices"]
