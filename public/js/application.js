@@ -7,4 +7,22 @@ $(document).ready(function () {
     request.done(function () { window.location = "/"; });
   });
 
+  $(".add-question").on("click", function(event) {
+    event.preventDefault();
+    var question_list = $(this).siblings("ol")
+    var request = $.get("/questions/new");
+    request.done(function(question){
+      $(question_list).append(question);
+    })
+  });
+
+  $("#question-list").on("click", ".add-choice", function(event) {
+    event.preventDefault();
+    var choices_list = $(this).siblings("ol");
+    var request = $.get("/choices/new");
+    request.done(function(choice){
+      $(choices_list).append(choice);
+    });
+  });
+
 });
