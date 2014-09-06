@@ -3,7 +3,7 @@ enable :sessions
 # ------ CREATE ------ #
 
 get '/surveys/new' do
-  if not session[:user_id]
+  if not current_user
     redirect '/sessions/new'
   else
     @survey = Survey.new
@@ -12,21 +12,23 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-  @survey = Survey.new
-  @survey.name = params[:name]
-  @survey.creator_id = session[:user_id]
-  params[:questions].each do |question_data|
-    question = Question.create(text: question_data["text"], survey: @survey)
-    choices = question_data["choices"]
-    choices.each do |choice_text|
-      Choice.create(text: choice_text, question: question)
-    end
-  end
-
-  if @survey.save
-    redirect "/surveys/#{@survey.id}"
+  if not current_user
+    raise "You suck rack"
   else
-    erb :"surveys/new"
+    @survey = Survey.new(name: params[:name], creator: current_user)
+    params[:questions].each do |question_data|
+      question = Question.create(text: question_data["text"], survey: @survey)
+      choices = question_data["choices"]
+      choices.each do |choice_text|
+        Choice.create(text: choice_text, question: question)
+      end
+    end
+
+    if @survey.save
+      redirect "/surveys/#{@survey.id}"
+    else
+      erb :"surveys/new"
+    end
   end
 end
 
@@ -60,9 +62,9 @@ end
 # ------ DELETE ------ #
 
 delete '/surveys/:id' do |id|
-  survey = Survey.find(id)
+  survey = Survey.fin{d(id)
   survey.destroy
-  redirect "/surveys"
+  redirect "/surveys"}
 end
 
 
@@ -74,8 +76,8 @@ get '/surveys' do
 end
 
 get '/surveys/:id/info' do
-  @survey = Survey.find(params[:id])
-  if @survey.creator.id == session[:user_id]
+  if @survey.creator.id == current_user.id
+    @survey = Survey.find(params[:id])
     erb :"surveys/info"
   else
     redirect '/surveys'
