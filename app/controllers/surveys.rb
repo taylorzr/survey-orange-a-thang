@@ -1,7 +1,9 @@
+enable :sessions
+
 # ------ CREATE ------ #
 
 get '/surveys/new' do
-  if not current_user
+  if not session[:user_id]
     redirect '/sessions/new'
   else
     @survey = Survey.new
@@ -9,31 +11,10 @@ get '/surveys/new' do
   end
 end
 
-get 'surveys/:id/info' do
-  @survey = Survey.find(params[:id])
-  if @survey.creator.id == current_user
-    erb :"surveys/info"
-  else
-    redirect '/surveys'
-  end
-end
-
-get '/surveys/:id' do |id|
-  @survey = Survey.find(id)
-  erb :"surveys/show"
-end
-
-post '/surveys/:id' do |id|
-  survey = Survey.find(id)
-  params[:questions].each do |question_id, choice_id|
-    Answer.create(question_id: question_id, choice_id: choice_id)
-  end
-  redirect '/surveys'
-end
-
 post '/surveys' do
   @survey = Survey.new
   @survey.name = params[:name]
+  @survey.creator_id = session[:user_id]
   params[:questions].each do |question_data|
     question = Question.create(text: question_data["text"], survey: @survey)
     choices = question_data["choices"]
@@ -55,6 +36,7 @@ end
 get '/surveys/:id/edit' do |id|
   @survey = Survey.find(id)
   erb :"surveys/edit"
+end
 
 
 put '/surveys/:id' do |id|
@@ -91,27 +73,28 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
-get '/surveys/:id/info' do |id|
-  @survey = Survey.find(id)
-  erb :'/surveys/info'
+get '/surveys/:id/info' do
+  @survey = Survey.find(params[:id])
+  if @survey.creator.id == session[:user_id]
+    erb :"surveys/info"
+  else
+    redirect '/surveys'
+  end
 end
+
+
+# ------- TAKE ------- #
 
 get '/surveys/:id' do |id|
   @survey = Survey.find(id)
   erb :"surveys/show"
 end
 
-
-
-# ------- TAKE ------- #
-
 post '/surveys/:id' do |id|
   survey = Survey.find(id)
-
   params[:questions].each do |question_id, choice_id|
     Answer.create(question_id: question_id, choice_id: choice_id)
   end
-
   redirect '/surveys'
 end
 

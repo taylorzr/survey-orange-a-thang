@@ -1,3 +1,5 @@
+enable :sessions
+
 get '/sessions/new' do
   # render sign-in page
   @email = nil
