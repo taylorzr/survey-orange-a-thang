@@ -1,8 +1,11 @@
-<h1><%= @user.email %></h1>
-<h3>Your Surveys</h3>
-<% @user.surveys.each do |survey| %>
-<p><a href="/surveys/<%= survey.id %>/info"><%= survey.name %></a></p>
-<% end %>
-<form action="/surveys/new" method="get">
-  <input type="submit" value="Create Survey">
-</form>
+<div class = "container">
+  <h2>Welcome back, <%= @user.email %>!</h2>
+    <% @user.surveys.each do |survey| %>
+    <p><a href="/surveys/<%= survey.id %>/info"><%= survey.name %></a></p>
+    <% end %>
+
+   <form action="/surveys/new" method="get">
+      <input type="submit" value="Create Survey">
+    </form>
+
+</div>

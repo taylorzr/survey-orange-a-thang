@@ -55,7 +55,7 @@ end
 get '/surveys/:id/edit' do |id|
   @survey = Survey.find(id)
   erb :"surveys/edit"
-end
+
 
 put '/surveys/:id' do |id|
   @survey = Survey.find(id)
