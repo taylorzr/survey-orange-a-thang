@@ -1,0 +1,4 @@
+<form action="/surveys/<%= @survey.id %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <%= erb :"surveys/_form" %>
+</form>

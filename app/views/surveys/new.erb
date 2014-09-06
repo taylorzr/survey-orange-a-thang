@@ -1,13 +1,5 @@
 <form action="/surveys" method="post">
-  <div>
-    <label>Name:</label> <input type="test" name="name" placeholder="Name">
-  </div>
-  <ol id="question-list">
-    <%= erb :"surveys/_question" %>
-    <%= erb :"surveys/_question" %>
-  </ol>
-  <input class="add-question" type="button" value="Add Question">
-  <input type="submit" value="Save">
+  <%= erb :"surveys/_form" %>
 </form>
 
 

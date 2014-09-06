@@ -1,8 +1,14 @@
 <li>
-  <label>Question:</label> <input type="text" name="questions[][text]" placeholder="Enter a question">
+  <label>Question:</label> <input type="text" name="questions[][text]" placeholder="Enter a question" value="<%= question.text %>">
   <ol>
-    <%= erb :"surveys/_choice" %>
-    <%= erb :"surveys/_choice" %>
+    <% if question.choices.count == 0 %>
+      <% erb :"surveys/_choice", locals: {choice: Choice.new} %>
+    <% else %>
+      <% question.choices.each do |choice| %>
+        <%= erb :"surveys/_choice", locals: {choice: choice} %>
+      <% end %>
+    <% end %>
+
   </ol>
   <input class="add-choice" type="button" value="Add Choice">
  </li>
