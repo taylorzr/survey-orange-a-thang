@@ -1,7 +1,9 @@
+enable :sessions
+
 # ------ CREATE ------ #
 
 get '/surveys/new' do
-  if not current_user
+  if not session[:user_id]
     redirect '/sessions/new'
   else
     @survey = Survey.new
@@ -71,7 +73,7 @@ get '/surveys' do
   erb :"surveys/index"
 end
 
-get 'surveys/:id/info' do
+get '/surveys/:id/info' do
   @survey = Survey.find(params[:id])
   if @survey.creator.id == session[:user_id]
     erb :"surveys/info"

@@ -1,3 +1,5 @@
+enable :sessions
+
 get '/users/new' do
   # render sign-up page
   @user = User.new
