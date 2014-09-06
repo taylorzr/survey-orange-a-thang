@@ -16,3 +16,12 @@ post '/users' do
     erb :sign_up
   end
 end
+
+get '/users/:id' do
+  @user = User.find(params[:id])
+  if @user.id == session[:user_id]
+    erb :'/users/show'
+  else
+    erb :sign_in
+  end
+end

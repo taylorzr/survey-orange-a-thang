@@ -36,13 +36,13 @@ body {
   height: 180px;
 }
 
-#create {
+#create, #take {
   box-sizing: border-box;
   display: block;
   border-radius: 5px;
   margin: 0 auto;
   margin-top: 5%;
-  padding: 5% 10% 5% 10%;
+  /*padding: 5% 10% 5% 10%;*/
   font-family: Helvetica, sans-serif;
   font-weight: bold;
 }
@@ -95,6 +95,7 @@ input {
 
 .errors {
   color: red;
+  text-align:center;
 }
 
 form.quirks {
@@ -116,4 +117,24 @@ form.quirks {
 .choices {
   list-style: none;
   border: none;
+}
+
+#sign-in, #sign-up {
+  position: relative;
+  display: inline-block;
+  margin-top: 10%;
+  margin-left: 37%;
+}
+
+#sign-up{
+  margin-left: 15%;
+}
+
+#sign-up .submit {
+  margin-left: 25%;
+  margin-top: 5%;
+}
+
+input[type="submit"] {
+  margin-left: 25%;
 }

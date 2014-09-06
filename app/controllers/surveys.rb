@@ -9,6 +9,29 @@ get '/surveys/new' do
   end
 end
 
+
+get 'surveys/:id/info' do
+  @survey = Survey.find(params[:id])
+  if @survey.creator.id == current_user
+    erb :"surveys/info"
+  else
+    redirect '/surveys'
+  end
+end
+
+get '/surveys/:id' do |id|
+  @survey = Survey.find(id)
+  erb :"surveys/show"
+end
+
+post '/surveys/:id' do |id|
+  survey = Survey.find(id)
+  params[:questions].each do |question_id, choice_id|
+    Answer.create(question_id: question_id, choice_id: choice_id)
+  end
+  redirect '/surveys'
+end
+
 post '/surveys' do
   @survey = Survey.new
   @survey.name = params[:name]
@@ -33,6 +56,7 @@ end
 get '/surveys/:id/edit' do |id|
   @survey = Survey.find(id)
   erb :"surveys/edit"
+>>>>>>> 68d8859a530b99d636e593dc69a85248839c5369
 end
 
 put '/surveys/:id' do |id|
@@ -53,6 +77,9 @@ put '/surveys/:id' do |id|
   end
 end
 
+<<<<<<< HEAD
+get '/questions/new' do
+=======
 
 # ------ DELETE ------ #
 
@@ -91,7 +118,8 @@ end
 
 # ------ AJAX ------ #
 
-get '/questions/new' do 
+get '/questions/new' do
+>>>>>>> 68d8859a530b99d636e593dc69a85248839c5369
   if request.xhr?
     erb :"surveys/_question", layout: false, locals: {question: Question.new}
   end
