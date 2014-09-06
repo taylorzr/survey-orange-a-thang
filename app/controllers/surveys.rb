@@ -56,7 +56,7 @@ end
 get '/surveys/:id/edit' do |id|
   @survey = Survey.find(id)
   erb :"surveys/edit"
->>>>>>> 68d8859a530b99d636e593dc69a85248839c5369
+
 end
 
 put '/surveys/:id' do |id|
@@ -76,10 +76,6 @@ put '/surveys/:id' do |id|
     erb :"surveys/edit"
   end
 end
-
-<<<<<<< HEAD
-get '/questions/new' do
-=======
 
 # ------ DELETE ------ #
 
@@ -119,7 +115,6 @@ end
 # ------ AJAX ------ #
 
 get '/questions/new' do
->>>>>>> 68d8859a530b99d636e593dc69a85248839c5369
   if request.xhr?
     erb :"surveys/_question", layout: false, locals: {question: Question.new}
   end

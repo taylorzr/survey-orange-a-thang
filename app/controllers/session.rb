@@ -11,7 +11,7 @@ post '/sessions' do
   if user
     # successfully authenticated; set up session and redirect
     session[:user_id] = user.id
-    redirect '/'
+    redirect "/users/#{user.id}"
   else
     # an error occurred, re-render the sign-in form, displaying an error
     @error = "Invalid email or password."
