@@ -18,12 +18,16 @@ end
 
 post '/surveys/:id' do |id|
   survey = Survey.find(id)
+  # raise params.inspect
+
+  params[:questions].each do |question_id, choice_id|
+    Answer.create(question_id: question_id, choice_id: choice_id)
+  end
+
   # survey.questions.each do |question|
-  #   question.answers = params[question.id][:answer]
+  #   answer = Answer.create(question_id: question.id, choice_id: params[choice.id])
   # end
-  raise params.inspect
-  # Survey.save
-  redirect '/surveys/index'
+  redirect '/surveys'
 end
 
 post '/surveys' do
