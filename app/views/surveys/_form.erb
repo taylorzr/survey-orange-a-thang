@@ -1,0 +1,14 @@
+<div>
+    <label>Name:</label> <input type="test" name="name" placeholder="Name" value="<%= @survey.name %>">
+</div>
+<ol id="question-list">
+  <% if @survey.questions.count == 0 %>
+    <%= erb :"surveys/_question", locals: {question: Question.new} %>
+  <% else %>
+    <% @survey.questions.each do |question| %>
+      <%= erb :"surveys/_question", locals: {question: question} %>
+    <% end %>
+  <% end %>
+</ol>
+<input class="add-question" type="button" value="Add Question">
+<input type="submit" value="Save">
