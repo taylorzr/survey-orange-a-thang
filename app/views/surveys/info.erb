@@ -4,11 +4,6 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
 
-        var options = {
-          title:'Sample Question', color: '000', opacity: 0.5,
-          vAxis: {title: 'Reponse Options',  titleTextStyle: {color: '000', opacity: 0.5}},
-          backgroundColor: '#FF8C00'
-        };
 
       	<% @survey.questions.each do |question| %>
         var data<%= question.id %> = google.visualization.arrayToDataTable([
@@ -18,15 +13,30 @@
           <% end %>
           ]);
 
+        var options<%= question.id %> = {
+          title: '<%= question.text %>', color: '000', opacity: 0.5,
+          vAxis: {title: 'Reponse Options',  titleTextStyle: {color: '000', opacity: 0.5}},
+          backgroundColor: '#FF8C00'
+        };
 
         var chart<%= question.id %> = new google.visualization.BarChart(document.getElementById('chart_div<%= question.id %>'));
 
-        chart<%= question.id %>.draw(data<%= question.id %>, options);
+
+        chart<%= question.id %>.draw(data<%= question.id %>, options<%= question.id %>);
       <% end %>
   	}
 </script>
 
 <h1><%= @survey.name %></h1>
+<form action="/survey/<%= @survey.id %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete this survey">
+</form>
+<form action="/survey/<%= @survey.id %>" method="get">
+	<input type="submit" value="View this survey">
+</form>
+
+<h3>Survey Statistics</h3>
 <% @survey.questions.each do |question| %>
 <div id="chart_div<%= question.id %>" style="width: 700px; height: 500px"></div>
 <% end %>
