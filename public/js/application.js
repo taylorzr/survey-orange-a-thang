@@ -1,3 +1,31 @@
+function newFields(array){
+  for (i=0; i<array.length; i++){
+    
+    if (array[i].val().length > 0){
+      return array[i].val()
+    }
+    else {
+      return "no blank fields"
+    }
+  }
+}
+
+function errors() {
+  if ($.trim($("input#title").val()) === "") {
+    alert('Fill out the name field or we will throw a orange-a-thang at you!');
+    return true;
+  }
+  else if ($.trim($(".choices").val()) === "") {
+    alert('Orange-a-thang is angry you have an empty choice field');
+    return true;
+  }
+  else if ($.trim($("input.questions").val()) === "") {
+    alert('Orange-a-thang will poke you if you do not fill empty question fields!');
+    return true;
+  }
+
+};
+
 $(document).ready(function () {
 
   // send an HTTP DELETE request for the sign-out link
@@ -25,8 +53,9 @@ $(document).ready(function () {
     });
   });
 
-
-
+  $("input#save").on('click', function(event) {
+    if (errors()===true){event.preventDefault();}
+  });
 });
 
 

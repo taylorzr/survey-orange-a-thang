@@ -1,5 +1,5 @@
 <li>
-  <label>Question:</label> <input type="text" size= "60" name="questions[][text]" placeholder="Enter a question" value="<%= question.text %>">
+  <label>Question:</label> <input type="text" class="questions" size= "60" name="questions[][text]" placeholder="Enter a question" value="<%= question.text %>">
   <ol>
     <% if question.choices.count == 0 %>
       <% erb :"surveys/_choice", locals: {choice: Choice.new} %>
