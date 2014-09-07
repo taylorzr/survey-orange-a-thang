@@ -16,7 +16,8 @@
         var options<%= question.id %> = {
           title: '<%= question.text %>', color: '000', opacity: 0.5,
           vAxis: {title: 'Reponse Options',  titleTextStyle: {color: '000', opacity: 0.5}},
-          backgroundColor: '#FF8C00'
+          backgroundColor: '#FF7F00',
+          colors: ['black']
         };
 
         var chart<%= question.id %> = new google.visualization.BarChart(document.getElementById('chart_div<%= question.id %>'));
@@ -27,16 +28,16 @@
   	}
 </script>
 
-<h1><%= @survey.name %></h1>
+<h1 class="survey-name"><%= @survey.name %></h1>
 <form action="/surveys/<%= @survey.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">
-	<input type="submit" value="Delete this survey">
+	<input class="delete" type="submit" value="Delete this survey">
 </form>
 <form action="/surveys/<%= @survey.id %>" method="get">
-	<input type="submit" value="Take this survey">
+	<input class="take"type="submit" value="Take this survey">
 </form>
 
-<h3>Survey Statistics</h3>
+<h1 class="survey-stats">Survey Statistics</h1>
 <% @survey.questions.each do |question| %>
-<div id="chart_div<%= question.id %>" style="width: 700px; height: 500px"></div>
+<div class="survey-graph"id="chart_div<%= question.id %>" style="width: 700px; height: 500px"></div>
 <% end %>
