@@ -1,18 +1,20 @@
 <div class = "container">
-<h2><%=@survey.name%></h2>
-  <form id = "takesurvey" action = "/surveys/<%=@survey.id%>" method="post">
+<h2><%=h @survey.name %></h2>
+  <form id = "takesurvey" action = "/surveys/<%= @survey.id %>" method="post">
 
     <ol>
         <% @survey.questions.each do |question| %>
-          <li><%=question.text%></li><br>
+          <li><%=h question.text %></li><br>
             <ul class="choices">
               <%question.choices.each do |choice| %>
-                <li><input type="radio" value = "<%=choice.id%>" name="questions[<%=question.id%>]"> <%=choice.text%></li><br>
+                <li><input type="radio" value = "<%=choice.id%>" name="questions[<%=question.id%>]"> <%= choice.text %></li><br>
               <% end %>
             </ul>
         <%end%>
     </ol>
-      <input class="take" type="submit" value="Submit">
+
+    <input class="take" type="submit" value="Submit">
+
   </form>
 </div>
 

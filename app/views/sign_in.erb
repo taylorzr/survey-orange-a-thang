@@ -4,7 +4,7 @@
 
   <form id="sign-in" method="post" action="/sessions">
 
-    <input type="email" name="email" placeholder="Insert Email" value="<%= @email %>"><br>
+    <input type="email" name="email" placeholder="Insert Email" value="<%=h @email %>"><br>
 
     <input type="password" name="password" placeholder="password">
     <br>

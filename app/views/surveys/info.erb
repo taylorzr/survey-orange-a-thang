@@ -9,12 +9,12 @@
         var data<%= question.id %> = google.visualization.arrayToDataTable([
           ["Choice", "Number of Responses"],
           <% question.choices.each do |choice| %>
-          ['<%= choice.text %>', <%= choice.answers.count %>],
+          ['<%=h choice.text %>', <%= choice.answers.count %>],
           <% end %>
           ]);
 
         var options<%= question.id %> = {
-          title: '<%= question.text %>', color: '000', opacity: 0.5,
+          title: '<%=h question.text %>', color: '000', opacity: 0.5,
           vAxis: {title: 'Reponse Options',  titleTextStyle: {color: '000', opacity: 0.5}},
           backgroundColor: '#FF7F00',
           colors: ['black']
@@ -28,7 +28,7 @@
   	}
 </script>
 
-<h1 class="survey-name"><%= @survey.name %></h1>
+<h1 class="survey-name"><%=h @survey.name %></h1>
 <form action="/surveys/<%= @survey.id %>" method="post">
 	<input type="hidden" name="_method" value="delete">
 	<input class="delete" type="submit" value="Delete this survey">

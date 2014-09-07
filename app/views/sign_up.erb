@@ -6,7 +6,7 @@
   <form id="sign-up" method="post" action="/users">
 
     <label class="label" for="email">Email</label>
-    <input type="email" name="user[email]" placeholder="e.g., me@example.com" value="<%= @user.email %>">
+    <input type="email" name="user[email]" placeholder="e.g., me@example.com" value="<%=h @user.email %>">
     <span id="email-errors" class="errors"></span>
     <br>
 

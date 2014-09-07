@@ -1,8 +1,8 @@
 <div class = "container">
-  <h2 class="profile-welcome">Welcome back, <%= @user.email %>!</h2>
+  <h2 class="profile-welcome">Welcome back, <%=h @user.email %>!</h2>
   <h4>Your Surveys</h4>
     <% @user.surveys.each do |survey| %>
-    <p class="profile-surveys"><a href="/surveys/<%= survey.id %>/info"><%= survey.name %></a></p>
+    <p class="profile-surveys"><a href="/surveys/<%= survey.id %>/info"><%=h survey.name %></a></p>
     <% end %>
 
    <form action="/surveys/new" method="get">
