@@ -25,7 +25,7 @@ post '/surveys' do
     end
 
     if @survey.save
-      redirect "/surveys/#{@survey.id}"
+      redirect "users/#{current_user.id}"
     else
       erb :"surveys/new"
     end
@@ -62,9 +62,10 @@ end
 # ------ DELETE ------ #
 
 delete '/surveys/:id' do |id|
-  survey = Survey.fin{d(id)
+  user_id = current_user.id
+  survey = Survey.find(id)
   survey.destroy
-  redirect "/surveys"}
+  redirect "/users/#{user_id}"
 end
 
 
