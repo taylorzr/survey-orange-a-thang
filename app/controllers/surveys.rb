@@ -43,6 +43,14 @@ end
 
 put '/surveys/:id' do |id|
   @survey = Survey.find(id)
+
+  @survey.questions.each do |question|
+    question.choices.each do |choice|
+      choice.destroy
+    end
+    question.destroy
+  end
+
   @survey.name = params[:name]
   params[:questions].each do |question_data|
     question = Question.create(text: question_data["text"], survey: @survey)
