@@ -37,10 +37,10 @@ $(document).ready(function () {
 
   $(".add-question").on("click", function(event) {
     event.preventDefault();
-    var question_list = $(this).siblings("ol")
+    var questions_list = $(this).siblings("ol")
     var request = $.get("/questions/new");
     request.done(function(question){
-      $(question_list).append(question);
+      $(question).hide().appendTo(questions_list).show("fast");
     })
   });
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
     var choices_list = $(this).siblings("ol");
     var request = $.get("/choices/new");
     request.done(function(choice){
-      $(choices_list).append(choice);
+      $(choice).hide().appendTo(choices_list).show("fast");
     });
   });
 
