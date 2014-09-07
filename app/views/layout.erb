@@ -11,9 +11,15 @@
 </head>
 <body>
   <nav>
-    <div class="brand"></div>
+    <span class="brand">
+      <img id="logo" src="../media/orange-orangutan-hi.png">
+      <h2 id="brand-header">ORANGE-A-THANG</h2>
+    </span>
     <ul>
       <% if current_user %>
+        <li><a id="home" href="/">Home</a></li>
+        <li><a id="profile" href="/users/<%= current_user.id %>">Profile</a></li>
+        <li><a id ="surveys" href="/surveys">Surveys</a></li>
         <li><a id="sign-out" href="/sessions/<%= current_user.id %>">Sign Out</a></li>
       <% else %>
         <li><a href="/">Home</a></li>
