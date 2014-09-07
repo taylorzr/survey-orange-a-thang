@@ -1,3 +1,15 @@
+function errors() {
+  if ($.trim($("#title").val()) === "") {
+        alert('Fill out the name field or we will throw a orange-a-thang at you!');
+  }
+  else if ($.trim($(".choices").val()) === "") {
+      alert('Orange-a-thang is angry you have an empty choice field');
+  }
+  else if ($.trim($(".questions").val()) === "") {
+      alert('Orange-a-thang will poke you if you do not fill empty question fields!');
+  }
+}
+
 $(document).ready(function () {
 
   // send an HTTP DELETE request for the sign-out link
@@ -25,25 +37,20 @@ $(document).ready(function () {
     });
   });
 
-  $('#entire_form').on('click', "#save", function(event) {
+  $('form').on('click', "#save", function(event) {
     event.preventDefault();
+
+    // var request = $.post("/surveys")
+    errors();
     
-    if ($.trim($("#title").val()) === "") {
-        alert('Fill out the title field or we will throw a orange-a-thang at you!');
-    }
-    else if ($.trim($(".choices").val()) === "") {
-        alert('Orange-a-thang is angry you have an empty choice field');
-    }
-    else if ($.trim($(".questions").val()) === "") {
-        alert('Orange-a-thang will poke you if you do not fill empty question fields!');
-    }
-    else {
-      
-        // window.location.replace(response);
-      
-        $.post( "/surveys", $( "#entire_form" ).serialize() );
+    // request.done(function(){
+    //   $(this).serialize()
+    // })
+    $(this).submit();
+    // window.location.replace(response);
+    // $.post( "/surveys", $(this).serialize() );
      
-    }
+    
   });
 
 
