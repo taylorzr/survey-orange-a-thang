@@ -1,7 +1,7 @@
 <div class = "container">
   <div id = "entire_form">
   <div>
-      <label>Name:</label> <input type="test" id="title" size= "45" name="name" placeholder="Name" value="<%= @survey.name %>">
+      <label>Name:</label> <input type="test" id="title" size= "45" name="name" placeholder="Name" value="<%=h @survey.name %>">
   </div>
   <ol id="question-list">
     <% if @survey.questions.count == 0 %>

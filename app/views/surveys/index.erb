@@ -2,7 +2,7 @@
   <h3>Surveys</h3>
   <ul class="surveys">
     <%@surveys.each do |survey| %>
-      <li><a href = "/surveys/<%=survey.id%>"><%=survey.name%></a></li>
+      <li><a href = "/surveys/<%= survey.id %>"><%=h survey.name %></a></li>
     <%end%>
   </ul>
 <div>
