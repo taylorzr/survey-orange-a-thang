@@ -44,6 +44,10 @@ $(document).ready(function () {
     })
   });
 
+  $("#question-list").on("click", ".remove-question", function(event){
+    $(this).parent().remove();
+  });
+
   $("#question-list").on("click", ".add-choice", function(event) {
     event.preventDefault();
     var choices_list = $(this).siblings("ol");
@@ -51,6 +55,11 @@ $(document).ready(function () {
     request.done(function(choice){
       $(choice).hide().appendTo(choices_list).show("fast");
     });
+  });
+
+  $("#question-list").on("click", ".remove-choice", function(event) {
+    event.preventDefault();
+    $(this).parent().remove();
   });
 
   $("input#save").on('click', function(event) {
