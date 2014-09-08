@@ -1,6 +1,7 @@
 <li>
   <label>Question:</label> 
   <input type="text" class="questions" size= "60" name="questions[][text]" placeholder="Enter a question" value="<%=h question.text %>">
+  <input class="add-choice" type="button" value="+">
   <input class="remove-question" type="button" value="x">
   <ol>
     <% if question.choices.count == 0 %>
@@ -12,5 +13,4 @@
     <% end %>
 
   </ol>
-  <input class="add-choice" type="button" value="Add Choice">
  </li>
